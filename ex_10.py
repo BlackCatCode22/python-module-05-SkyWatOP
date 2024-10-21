@@ -2,26 +2,26 @@ fname = input('Enter File: ')
 if len(fname) < 1 : fname = 'clown.txt'
 hand = open(fname)
 
-di = dict()
+many = dict()
 for lin in hand:
     lin = lin.rstrip()
     # print(lin)
     wds = lin.split()
     # print(wds)
     for w in wds:
-        # idiom: retrieve/create/ update counter
-        di[w] = di.get(w,0) + 1
-        # print(w,'new', di[w])
+        many[w] = many.get(w,0) + 1
 
-#now we want to find the most common word
-largest = -1
-theword = None
-for k,v in di.items() :
-    #print(k,v)
-    if v > largest :
-        largest = v
-        theword = k #capture/remember the key that was largest
+# Find the top 5 word by freq
 
+tmp = dict()
+newList = list()
+for k,v in many.items():
+    tup = (v,k)
+    newList.append(tup)
 
-print(theword,largest)
+cool = sorted(newList, reverse=True)
+
+for v,k in cool[:5] :
+
+    print(k,v)
 
